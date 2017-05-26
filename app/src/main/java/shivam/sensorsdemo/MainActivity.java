@@ -52,13 +52,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Sensor s = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        Sensor s = sm.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         sel = new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                t.setText("X="+event.values[0]+
+                /*t.setText("X="+event.values[0]+
                         "\nY="+event.values[1]+
-                        "\nZ="+event.values[2]);
+                        "\nZ="+event.values[2]);*/
+                if (event.values[0]==0)
+                {
+                    t.setText("DONT TOUCH ME");
+                }
+                else
+                {
+                    t.setText("TOUCH ME");
+                }
             }
 
             @Override
